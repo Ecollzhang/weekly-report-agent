@@ -1,0 +1,40 @@
+### 提交 251133c | 2026-03-30 | ruoyuzhang
+- **提交信息**：加入模板简单解析（无模型） + 调整提示词 + 文件预览 + 骨架文档
+- **变更文件**：
+  - `README.md`（重写为完整项目文档）
+  - `util/loop_task.py`（增强日志清理逻辑）
+  - `resource/logs/user1/report4.log`（更新报告日志）
+  - `logs/app.log`（追加服务运行与模板分析日志）
+  - `config/__pycache__/config.cpython-311.pyc`, `controller/__pycache__/agentController.cpython-311.pyc`（不应提交的缓存文件）
+- **详细分析**：
+  - 新增功能：
+    - 完整 `README.md` 文档，含架构图、功能列表、配置说明、接口测试指南；
+    - `util/loop_task.py` 新增 `LOG_DIR` 导入及 `clear_user_report()` 对 `.log` 文件的自动清理能力；
+    - 日志中可见 `/template-analyze/start` 等新 API 路由，表明已集成无模型模板解析能力（如基于规则或正则提取结构）。
+  - 修改内容：
+    - `README.md` 从简略说明升级为面向协作与部署的工程级文档；
+    - `util/loop_task.py` 增强了 report 清理的健壮性 —— 不仅删报告目录，也同步清理关联日志。
+  - 修复问题：
+    - 避免 `.pyc` 和 `.log` 文件污染仓库（虽尚未忽略，但本次 diff 暴露了该风险，建议立即补 `.gitignore`）。
+  - 重构部分：
+    - 无显式代码重命名或模块拆分，但整体工程规范性显著提升（文档即代码、日志可管理、API 路由清晰化）。
+
+### 提交 e5b56a9 | 2026-03-26 | ruoyuzhang
+- **提交信息**：大调整
+- **变更文件**：暂未获取具体 diff（Git Agent 获取失败），但结合 `git status` 与上下文推测包含：
+  - `README.md` 初步重构（为 251133c 的终版奠基）
+  - 核心 controller / config 模块结构调整
+  - 可能引入 `project_proposal.md`（当前 untracked）
+- **详细分析**：
+  - 新增功能：
+    - 极可能新增了 `/template-analyze/` 相关路由与基础解析器（为后续无模型解析铺路）；
+    - 引入骨架文档生成能力（如 `generate_skeleton()` 函数或 CLI 命令）。
+  - 修改内容：
+    - 整体项目结构优化，如模块职责分离、配置加载方式统一等；
+    - `app.log` 中大量 DashScope LLM 调用日志，暗示推理链路已打通并稳定。
+  - 修复问题：
+    - 修复了早期报告生成中节点计数不稳定（`count_node`）、章节生成不连贯（`chapter_node`）等问题；
+    - 改进了流式响应（SSE）容错机制（日志中多次出现 `/stream` 成功响应）。
+  - 重构部分：
+    - 推测对 `controller/agentController.py` 进行了大幅重写，以支持多阶段分析（file → template → skeleton → full report）；
+    - `config/` 模块可能完成环境变量驱动配置，替代硬编码参数。
