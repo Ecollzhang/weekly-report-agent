@@ -26,6 +26,8 @@ weekly-report-agent/
 │   ├── chat_tool.py   # 聊天相关工具
 │   └── report_tool.py # 报告生成工具
 ├── workspace/         # 工作空间
+│   ├── agent_memory.json # agent记忆
+│   ├── task.md # 任务提示词
 │   ├── report_template.md # 报告模板
 │   └── weekly_report.md   # 生成的周报
 ├── main.py            # 主程序入口
