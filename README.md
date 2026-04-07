@@ -68,6 +68,9 @@ weekly-report-agent/
 3. 生成技术周报：`请调用工具获取报告模板并读取提交分析记录，生成一份完整的技术周报`
 4. 查看生成的报告：`cat workspace/weekly_report.md`
 
+## Agent单独使用示例
+<img width="2013" height="969" alt="image" src="https://github.com/user-attachments/assets/1a23c8e4-7b03-489c-827f-ff7cf7b8315d" />
+
 ## 📎 技术要点
 
 - 使用 LangChain 和 LangGraph 构建智能体框架
