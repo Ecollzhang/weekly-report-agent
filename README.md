@@ -69,7 +69,7 @@ weekly-report-agent/
 4. 查看生成的报告：`cat workspace/weekly_report.md`
 
 ## Agent单独使用示例
-<img width="2013" height="969" alt="image" src="https://github.com/user-attachments/assets/1a23c8e4-7b03-489c-827f-ff7cf7b8315d" />
+![example](./images/example.png "Agent单独使用示例")
 
 ## 📎 技术要点
 
